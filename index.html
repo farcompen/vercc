@@ -1,0 +1,62 @@
+
+<!doctype html>
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<h3 style="color: #5e9ca0;">Kırıkkale Üniversite Not Ortolama Hesaplama Aracı <span style="color: #2b2301;"></span></h1>
+<div>
+    <input type="text" id="txtVize" placeholder="Vize Notu giriniz "/>
+    <input type="text" id="txtFinal" placeholder="final notu giriniz ">
+    <input type="button" value="Hesapla" onclick="hesapla()"/>
+    <input  type="button" value="Temizle" onclick="temizle()"/>
+</div>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<h5 style="color: #2e6c80;">Not Durumu :</h5>
+<table class="table table-bordered">
+<thead>
+<tr>
+<td>Not Ortalaması</td>
+<td>Durum</td>
+</tr>
+</thead>
+<tbody id="tblBodyNot">
+
+</tbody>
+</table>
+<p><strong>&nbsp;</strong></p>
+
+<p><strong>&nbsp;</strong></p>
+<script type="text/javascript">
+    function hesapla(){
+        let durum = "GEÇTİ";
+        const vizeCarpan=0.4;
+        const finalCarpan= 0.6
+        let vizeNotu = document.querySelector('#txtVize').value;
+        let finalNotu = document.querySelector('#txtFinal').value;
+        let ortalama = (vizeNotu*vizeCarpan)+(finalCarpan*finalNotu);
+       if(ortalama<45){
+        durum="KALDI"
+       }
+      
+        let row =  document.querySelector('#tblBodyNot').insertRow()
+        let vizeCol = row.insertCell(0);
+        let durumCOl = row.insertCell(1);
+        vizeCol.innerHTML = ortalama;
+        durumCOl.innerHTML=durum
+
+       
+    }
+    
+        function temizle(){
+    
+            document.querySelector('#txtVize').value=0;
+            document.querySelector('#txtFinal').value=0;
+    
+        }
+    
+    
+    </script>
+</html
